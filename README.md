@@ -34,9 +34,8 @@ This repository demonstrates the features and drawbacks of HTTP/1.1, HTTP/2, HTT
 
 ### Prerequisites
 
-- [Docker](https://www.docker.com/get-started) installed
 - [Python 3.8+](https://www.python.org/downloads/) installed
-- [pip](https://pip.pypa.io/en/stable/)
+- caddy server installed
 
 ---
 
