@@ -82,38 +82,16 @@ This repository demonstrates the features and drawbacks of HTTP/1.1, HTTP/2, HTT
 
 ---
 
-### HTTP/3 Demo (QUIC)
-
-1. Build and run the Caddy server (HTTP/3 enabled) using Docker:
-   ```sh
-   docker compose up --build
-   ```
-2. Visit [https://localhost:8444](https://localhost:8444) (accept self-signed cert)
-
----
-
 ## Testing
 
 - Use your browser or `curl`:
   - HTTP/1.1: `curl -v http://localhost:8081`
   - HTTP/2: `curl -vk --http2 https://localhost:8082`
   - HTTPS: `curl -vk https://localhost:8443`
-  - HTTP/3: `curl -vk --http3 https://localhost:8444`
 
 ## Cleanup
 
-- Stop Python servers with `Ctrl+C`.
-- Stop Docker containers:
-  ```sh
-  docker compose down
-  ```
-
----
-
-## Notes
-
-- Self-signed certificates are used for demo purposes. Browsers will show a warning.
-- HTTP/3 requires a browser or curl with HTTP/3 support.
+- Stop Python servers with `Ctrl+C`
 
 ---
 

@@ -1,9 +1,0 @@
-# Caddyfile for HTTP/3 Demo
-:8444 {
-  root * /srv
-  file_server
-  tls self_signed
-  encode gzip
-  # Enable HTTP/3 (QUIC)
-  protocols h1 h2 h3
-}
