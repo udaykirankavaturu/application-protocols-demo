@@ -68,6 +68,26 @@ This repository demonstrates the features and drawbacks of HTTP/1.1, HTTP/2, HTT
 
 ---
 
+### HTTP3 Demo
+
+1. Install caddy server
+
+```sh
+brew install caddy
+```
+
+2. Run caddy server
+
+```sh
+sudo caddy run --config Caddyfile
+```
+
+3. Visit URL in postman and inspect headers
+
+```
+curl --location 'https://localhost:443'
+```
+
 ### HTTPS Demo
 
 1. Generate a self-signed certificate (if not present):
