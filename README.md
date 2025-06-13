@@ -100,21 +100,6 @@ curl --location 'https://localhost:443'
    ```
 3. Visit [https://localhost:8443](https://localhost:8443) (accept self-signed cert)
 
----
-
-## Testing
-
-- Use your browser or `curl`:
-  - HTTP/1.1: `curl -v http://localhost:8081`
-  - HTTP/2: `curl -vk --http2 https://localhost:8082`
-  - HTTPS: `curl -vk https://localhost:8443`
-
-## Cleanup
-
-- Stop Python servers with `Ctrl+C`
-
----
-
 ## License
 
 See [LICENSE](LICENSE).
