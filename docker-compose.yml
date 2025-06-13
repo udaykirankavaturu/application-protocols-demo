@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  caddy:
+    image: caddy:2.8.4-alpine
+    container_name: caddy-http3-demo
+    ports:
+      - "8444:8444/tcp"
+      - "8444:8444/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - XDG_DATA_HOME=/data
+      - XDG_CONFIG_HOME=/config
+    command:
+      [
+        "caddy",
+        "run",
+        "--config",
+        "/etc/caddy/Caddyfile",
+        "--adapter",
+        "caddyfile",
+      ]
+    restart: unless-stopped
+volumes:
+  caddy_data:
+  caddy_config:
