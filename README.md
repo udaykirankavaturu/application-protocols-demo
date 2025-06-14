@@ -11,8 +11,6 @@ This repository demonstrates the features and drawbacks of HTTP/1.1, HTTP/2, HTT
   - [HTTP/2 Demo](#http2-demo)
   - [HTTPS Demo](#https-demo)
   - [HTTP/3 Demo](#http3-demo)
-- [Testing](#testing)
-- [Cleanup](#cleanup)
 
 ## Overview
 
@@ -57,47 +55,41 @@ This repository demonstrates the features and drawbacks of HTTP/1.1, HTTP/2, HTT
 
 1. Install dependencies:
    ```sh
-   pip3 install flask hypercorn
+   pip3 install quart hypercorn h2
    ```
-2. Run the server:
+2. Generate certificates:
    ```sh
-   /Library/Frameworks/Python.framework/Versions/3.12/bin/hypercorn http2_server:app --bind 0.0.0.0:8082 --certfile cert.pem --keyfile key.pem
+   openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
    ```
-3. Visit [https://localhost:8082](https://localhost:8082) (accept self-signed cert)
+3. Run the server:
+   ```sh
+   /Library/Frameworks/Python.framework/Versions/3.12/bin/hypercorn --certfile cert.pem --keyfile key.pem http2_server:app --bind "0.0.0.0:8081"
+   ```
+4. Visit [https://localhost:8081](https://localhost:8081) (accept self-signed cert)
 
 ---
 
 ### HTTP3 Demo
 
-1. Install caddy server
+1. Install dependencies
 
 ```sh
-brew install caddy
+pip3 install quart hypercorn aioquic
 ```
 
-2. Run caddy server
+2. Generate certificates:
 
 ```sh
-sudo caddy run --config Caddyfile
+openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
 ```
 
-3. Visit URL in postman and inspect headers
+3. Run server
 
 ```
-curl --location 'https://localhost:443'
+/Library/Frameworks/Python.framework/Versions/3.12/bin/hypercorn http3_server:app --bind "0.0.0.0:8081" --quic-bind "0.0.0.0:8081" --certfile cert.pem --keyfile key.pem
 ```
 
-### HTTPS Demo
-
-1. Generate a self-signed certificate (if not present):
-   ```sh
-   openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj "/CN=localhost"
-   ```
-2. Run the HTTPS server:
-   ```sh
-   python3 https_server.py
-   ```
-3. Visit [https://localhost:8443](https://localhost:8443) (accept self-signed cert)
+4. Visit [https://localhost:8081](https://localhost:8081) (accept self-signed cert)
 
 ## License
 
