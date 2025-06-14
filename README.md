@@ -30,13 +30,6 @@ This repository demonstrates the features and drawbacks of HTTP/1.1, HTTP/2, HTT
 
 ## How to Use
 
-### Prerequisites
-
-- [Python 3.8+](https://www.python.org/downloads/) installed
-- caddy server installed
-
----
-
 ### HTTP/1.1 Demo
 
 1. Install dependencies:
